@@ -1,0 +1,1917 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lotus Kitab 🪷</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fff5f8;
+    color: #654f58;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+input {
+    padding: 13px 15px;
+    border: 2px solid #f4dce4;
+    border-radius: 13px;
+    outline: none;
+    background: #fffafb;
+    color: #654f58;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #e8a8ba;
+}
+
+/* ================= LOGIN ================= */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffe0e9, #fff7f9);
+}
+
+.login-box {
+    width: 90%;
+    max-width: 440px;
+    padding: 40px;
+    background: white;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(180,120,140,0.15);
+}
+
+.login-box h1 {
+    color: #d986a0;
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.login-box p {
+    color: #9a7b85;
+    margin-bottom: 20px;
+}
+
+.login-box input {
+    width: 100%;
+    margin: 6px 0;
+}
+
+/* ================= BUTTONS ================= */
+
+.primary {
+    background: #efadc0;
+    color: white;
+}
+
+.secondary {
+    background: #f8dce5;
+    color: #8d6873;
+}
+
+.delete {
+    background: #efb7be;
+    color: white;
+}
+
+/* ================= EMOJIS ================= */
+
+.emoji-title {
+    margin: 12px 0 8px;
+    color: #9a7b85;
+    font-size: 14px;
+}
+
+.emoji-picker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+.emoji-option {
+    width: 43px;
+    height: 43px;
+    padding: 0;
+    background: #fff0f4;
+    border: 2px solid #f4dce4;
+    font-size: 21px;
+}
+
+.emoji-option.selected {
+    background: #f6c5d4;
+    border-color: #df91aa;
+}
+
+/* ================= MAIN ================= */
+
+#mainPage {
+    display: none;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    background: linear-gradient(135deg, #f5bfd0, #f9dfe7);
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #704f59;
+}
+
+header h1 {
+    font-size: 29px;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#userDisplay {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #704f59;
+    white-space: nowrap;
+}
+
+.profile-emoji {
+    font-size: 20px;
+}
+
+.edit-profile {
+    background: rgba(255,255,255,0.65);
+    color: #8d6873;
+    padding: 8px 11px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+/* ================= WELCOME ================= */
+
+.welcome {
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(180,120,140,0.08);
+}
+
+.welcome h2 {
+    color: #c87d96;
+    margin-bottom: 7px;
+}
+
+/* ================= ADD BOOK ================= */
+
+.add-book {
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(180,120,140,0.08);
+}
+
+.add-book h2 {
+    color: #c87d96;
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.form-row input {
+    flex: 1;
+    min-width: 170px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box {
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px;
+    background: white;
+}
+
+/* ================= BOOK ================= */
+
+.book {
+    background: white;
+    padding: 25px;
+    margin-bottom: 22px;
+    border-radius: 22px;
+    box-shadow: 0 5px 20px rgba(180,120,140,0.08);
+}
+
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.book-title {
+    color: #bd7890;
+    font-size: 22px;
+}
+
+.status {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: #fce3ea;
+    color: #a46e7d;
+}
+
+.status.finished {
+    background: #e3f2e7;
+    color: #70917a;
+}
+
+/* ================= RATING ================= */
+
+.rating {
+    margin-top: 8px;
+}
+
+.star {
+    background: transparent;
+    color: #e4a0b5;
+    padding: 1px 3px;
+    font-size: 23px;
+}
+
+/* ================= DATES ================= */
+
+.dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 18px 0;
+    color: #8d747c;
+    font-size: 14px;
+}
+
+/* ================= PROGRESS ================= */
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 16px;
+    background: #f9e7ec;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #f3b2c6, #eaa0b8);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+/* ================= PAGES ================= */
+
+.pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 20px;
+    padding: 5px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.page {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    background: #fff0f4;
+    color: #a77b87;
+    border: 1px solid #f4d9e1;
+}
+
+.page.read {
+    background: #e9a5b9;
+    color: white;
+}
+
+/* ================= EMPTY ================= */
+
+.empty {
+    text-align: center;
+    padding: 50px;
+    color: #aa8c95;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(80,50,60,0.25);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(100,60,70,0.2);
+}
+
+.modal-box h2 {
+    color: #c87d96;
+    margin-bottom: 15px;
+}
+
+.modal-box input {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+#profileMessage {
+    color: #b46f82;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .user-area {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .book-header {
+        flex-direction: column;
+    }
+
+    .dates {
+        flex-direction: column;
+        gap: 7px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- LOGIN -->
+<!-- ================================================= -->
+
+<div id="loginPage">
+
+<div class="login-box">
+
+<h1>🪷 Lotus Kitab</h1>
+
+<p>Your little reading corner</p>
+
+<input
+    type="text"
+    id="username"
+    placeholder="Username"
+>
+
+<div class="emoji-title">
+Choose your profile emoji ✨
+</div>
+
+<div class="emoji-picker">
+
+<button type="button" class="emoji-option selected" data-emoji="🪷">🪷</button>
+<button type="button" class="emoji-option" data-emoji="⭐">⭐</button>
+<button type="button" class="emoji-option" data-emoji="🐄">🐄</button>
+<button type="button" class="emoji-option" data-emoji="🪩">🪩</button>
+<button type="button" class="emoji-option" data-emoji="🪼">🪼</button>
+<button type="button" class="emoji-option" data-emoji="🐟">🐟</button>
+<button type="button" class="emoji-option" data-emoji="🍀">🍀</button>
+<button type="button" class="emoji-option" data-emoji="🧚‍♀️">🧚‍♀️</button>
+<button type="button" class="emoji-option" data-emoji="🌕">🌕</button>
+<button type="button" class="emoji-option" data-emoji="🐚">🐚</button>
+<button type="button" class="emoji-option" data-emoji="🌊">🌊</button>
+
+</div>
+
+<input
+    type="email"
+    id="email"
+    placeholder="Email address"
+>
+
+<input
+    type="password"
+    id="password"
+    placeholder="Password"
+>
+
+<br><br>
+
+<button
+    type="button"
+    class="primary"
+    id="loginButton">
+    Log In
+</button>
+
+<button
+    type="button"
+    class="secondary"
+    id="signupButton">
+    Create Account
+</button>
+
+<p id="loginMessage" style="margin-top:15px;"></p>
+
+</div>
+</div>
+
+
+<!-- ================================================= -->
+<!-- MAIN PAGE -->
+<!-- ================================================= -->
+
+<div id="mainPage">
+
+<header>
+
+<div>
+
+<h1>🪷 Lotus Kitab</h1>
+
+<p>One page at a time.</p>
+
+</div>
+
+
+<div class="user-area">
+
+<span id="userDisplay"></span>
+
+<button
+    type="button"
+    class="edit-profile"
+    id="editProfileButton">
+    ✏️
+</button>
+
+<button
+    type="button"
+    class="secondary"
+    id="logoutButton">
+    Log Out
+</button>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+
+<div class="welcome">
+
+<h2 id="welcomeMessage"></h2>
+
+<p>
+Keep track of your stories,
+pages and reading journey. 📖
+</p>
+
+</div>
+
+
+<div class="add-book">
+
+<h2>🌷 Add a New Book</h2>
+
+<div class="form-row">
+
+<input
+    type="text"
+    id="bookName"
+    placeholder="Book name"
+>
+
+<input
+    type="number"
+    id="totalPages"
+    placeholder="Total pages"
+    min="1"
+>
+
+<input
+    type="date"
+    id="startDate"
+>
+
+<button
+    type="button"
+    class="primary"
+    id="addBookButton">
+    Add Book
+</button>
+
+</div>
+</div>
+
+
+<div class="search-box">
+
+<input
+    type="text"
+    id="search"
+    placeholder="🔎 Search your books..."
+>
+
+</div>
+
+
+<div id="bookList"></div>
+
+</div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- EDIT PROFILE MODAL -->
+<!-- ================================================= -->
+
+<div
+    class="modal"
+    id="profileModal">
+
+<div class="modal-box">
+
+<h2>✏️ Edit Profile</h2>
+
+<input
+    type="text"
+    id="newUsername"
+    placeholder="New username"
+>
+
+<div class="emoji-title">
+Choose your emoji
+</div>
+
+<div class="emoji-picker">
+
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🪷">🪷</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="⭐">⭐</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🐄">🐄</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🪩">🪩</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🪼">🪼</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🐟">🐟</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🍀">🍀</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🧚‍♀️">🧚‍♀️</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🌕">🌕</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🐚">🐚</button>
+<button type="button" class="emoji-option profileEmojiOption" data-emoji="🌊">🌊</button>
+
+</div>
+
+
+<div class="modal-buttons">
+
+<button
+    type="button"
+    class="secondary"
+    id="cancelProfile">
+    Cancel
+</button>
+
+<button
+    type="button"
+    class="primary"
+    id="saveProfile">
+    💾 Save Changes
+</button>
+
+</div>
+
+
+<p id="profileMessage"></p>
+
+</div>
+</div>
+
+
+<!-- ================================================= -->
+<!-- FIREBASE -->
+<!-- ================================================= -->
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    updateDoc,
+    deleteDoc,
+    setDoc,
+    getDoc,
+    query,
+    where
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* ================= FIREBASE CONFIG ================= */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyA8Y6jHFwsOJTkJevCO2z3GrKuxXqIFN74",
+
+    authDomain:
+    "lotus-kitab-website.firebaseapp.com",
+
+    projectId:
+    "lotus-kitab-website",
+
+    storageBucket:
+    "lotus-kitab-website.firebasestorage.app",
+
+    messagingSenderId:
+    "535459328870",
+
+    appId:
+    "1:535459328870:web:aec23505b84b606ee08ea7"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+let books = [];
+
+let selectedEmoji = "🪷";
+
+let profileEmoji = "🪷";
+
+let currentUsername = "Reader";
+
+
+/* ================================================= */
+/* LOGIN EMOJIS */
+/* ================================================= */
+
+document
+.querySelectorAll("#loginPage .emoji-option")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        selectedEmoji =
+            button.dataset.emoji;
+
+        document
+        .querySelectorAll("#loginPage .emoji-option")
+        .forEach(item =>
+            item.classList.remove("selected")
+        );
+
+        button.classList.add("selected");
+
+    });
+
+});
+
+
+/* ================================================= */
+/* CREATE ACCOUNT */
+/* ================================================= */
+
+document
+.getElementById("signupButton")
+.addEventListener("click", async () => {
+
+    const username =
+        document.getElementById("username")
+        .value.trim();
+
+    const email =
+        document.getElementById("email")
+        .value.trim();
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+    const message =
+        document.getElementById("loginMessage");
+
+
+    if (!username || !email || !password) {
+
+        message.textContent =
+            "Please fill in all fields.";
+
+        return;
+    }
+
+
+    if (password.length < 6) {
+
+        message.textContent =
+            "Password must be at least 6 characters.";
+
+        return;
+    }
+
+
+    try {
+
+        const result =
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        await setDoc(
+            doc(db, "users", result.user.uid),
+            {
+                username: username,
+                emoji: selectedEmoji,
+                email: email
+            }
+        );
+
+
+        message.textContent =
+            "Account created! " +
+            selectedEmoji;
+
+    }
+    catch(error) {
+
+        message.textContent =
+            getFirebaseError(error);
+
+    }
+
+});
+
+
+/* ================================================= */
+/* LOGIN */
+/* ================================================= */
+
+document
+.getElementById("loginButton")
+.addEventListener("click", async () => {
+
+    const email =
+        document.getElementById("email")
+        .value.trim();
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+    const message =
+        document.getElementById("loginMessage");
+
+
+    try {
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+    }
+    catch(error) {
+
+        message.textContent =
+            getFirebaseError(error);
+
+    }
+
+});
+
+
+/* ================================================= */
+/* LOGOUT */
+/* ================================================= */
+
+document
+.getElementById("logoutButton")
+.addEventListener("click", async () => {
+
+    await signOut(auth);
+
+});
+
+
+/* ================================================= */
+/* AUTH STATE */
+/* ================================================= */
+
+onAuthStateChanged(auth, async user => {
+
+    if (!user) {
+
+        document
+        .getElementById("loginPage")
+        .style.display = "flex";
+
+        document
+        .getElementById("mainPage")
+        .style.display = "none";
+
+        return;
+    }
+
+
+    document
+    .getElementById("loginPage")
+    .style.display = "none";
+
+    document
+    .getElementById("mainPage")
+    .style.display = "block";
+
+
+    try {
+
+        const profile =
+            await getDoc(
+                doc(db, "users", user.uid)
+            );
+
+
+        if (profile.exists()) {
+
+            const data =
+                profile.data();
+
+            currentUsername =
+                data.username || "Reader";
+
+            profileEmoji =
+                data.emoji || "🪷";
+        }
+
+    }
+    catch(error) {
+
+        console.log(error);
+
+    }
+
+
+    updateProfileDisplay();
+
+    await loadBooks();
+
+});
+
+
+/* ================================================= */
+/* DISPLAY PROFILE */
+/* ================================================= */
+
+function updateProfileDisplay() {
+
+    const userDisplay =
+        document.getElementById("userDisplay");
+
+
+    userDisplay.innerHTML = "";
+
+    const name =
+        document.createElement("span");
+
+    name.textContent =
+        currentUsername;
+
+
+    const emoji =
+        document.createElement("span");
+
+    emoji.className =
+        "profile-emoji";
+
+    emoji.textContent =
+        profileEmoji;
+
+
+    userDisplay.appendChild(name);
+
+    userDisplay.appendChild(emoji);
+
+
+    const welcome =
+        document.getElementById(
+            "welcomeMessage"
+        );
+
+    welcome.innerHTML = "";
+
+    welcome.appendChild(
+        document.createTextNode(
+            "Welcome back, " +
+            currentUsername +
+            " "
+        )
+    );
+
+    const welcomeEmoji =
+        document.createElement("span");
+
+    welcomeEmoji.className =
+        "profile-emoji";
+
+    welcomeEmoji.textContent =
+        profileEmoji;
+
+    welcome.appendChild(
+        welcomeEmoji
+    );
+
+    welcome.appendChild(
+        document.createTextNode("!")
+    );
+
+}
+
+
+/* ================================================= */
+/* OPEN EDIT PROFILE */
+/* ================================================= */
+
+document
+.getElementById("editProfileButton")
+.addEventListener("click", () => {
+
+    const modal =
+        document.getElementById(
+            "profileModal"
+        );
+
+    document
+    .getElementById("newUsername")
+    .value =
+        currentUsername;
+
+
+    document
+    .querySelectorAll(".profileEmojiOption")
+    .forEach(button => {
+
+        button.classList.toggle(
+            "selected",
+            button.dataset.emoji === profileEmoji
+        );
+
+    });
+
+
+    document
+    .getElementById("profileMessage")
+    .textContent = "";
+
+
+    modal.style.display = "flex";
+
+});
+
+
+/* ================================================= */
+/* PROFILE EMOJI */
+/* ================================================= */
+
+document
+.querySelectorAll(".profileEmojiOption")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        profileEmoji =
+            button.dataset.emoji;
+
+
+        document
+        .querySelectorAll(".profileEmojiOption")
+        .forEach(item =>
+            item.classList.remove("selected")
+        );
+
+
+        button.classList.add("selected");
+
+    });
+
+});
+
+
+/* ================================================= */
+/* CANCEL PROFILE */
+/* ================================================= */
+
+document
+.getElementById("cancelProfile")
+.addEventListener("click", () => {
+
+    document
+    .getElementById("profileModal")
+    .style.display = "none";
+
+});
+
+
+/* ================================================= */
+/* SAVE PROFILE — FIXED */
+/* ================================================= */
+
+document
+.getElementById("saveProfile")
+.addEventListener("click", async () => {
+
+    const user =
+        auth.currentUser;
+
+    const message =
+        document.getElementById(
+            "profileMessage"
+        );
+
+    const saveButton =
+        document.getElementById(
+            "saveProfile"
+        );
+
+
+    if (!user) {
+
+        message.textContent =
+            "You are not logged in.";
+
+        return;
+    }
+
+
+    const newUsername =
+        document
+        .getElementById("newUsername")
+        .value
+        .trim();
+
+
+    if (!newUsername) {
+
+        message.textContent =
+            "Please enter a username.";
+
+        return;
+    }
+
+
+    if (newUsername.length < 2) {
+
+        message.textContent =
+            "Username must have at least 2 characters.";
+
+        return;
+    }
+
+
+    /* Prevent double-clicking */
+
+    saveButton.disabled = true;
+
+    saveButton.textContent =
+        "Saving...";
+
+
+    try {
+
+        await setDoc(
+            doc(db, "users", user.uid),
+            {
+                username: newUsername,
+                emoji: profileEmoji,
+                email: user.email
+            },
+            {
+                merge: true
+            }
+        );
+
+
+        /* Update current profile */
+
+        currentUsername =
+            newUsername;
+
+
+        /* Update website immediately */
+
+        updateProfileDisplay();
+
+
+        message.textContent =
+            "Profile updated! 🌸";
+
+
+        /* Close after saving */
+
+        setTimeout(() => {
+
+            document
+            .getElementById("profileModal")
+            .style.display = "none";
+
+        }, 500);
+
+
+    }
+    catch(error) {
+
+        console.error(
+            "Profile update error:",
+            error
+        );
+
+        message.textContent =
+            "Could not save changes: " +
+            error.message;
+
+    }
+    finally {
+
+        saveButton.disabled = false;
+
+        saveButton.textContent =
+            "💾 Save Changes";
+
+    }
+
+});
+
+
+/* ================================================= */
+/* ADD BOOK */
+/* ================================================= */
+
+document
+.getElementById("addBookButton")
+.addEventListener("click", async () => {
+
+    const user =
+        auth.currentUser;
+
+    if (!user) return;
+
+
+    const name =
+        document
+        .getElementById("bookName")
+        .value.trim();
+
+
+    const totalPages =
+        parseInt(
+            document
+            .getElementById("totalPages")
+            .value
+        );
+
+
+    const startDate =
+        document
+        .getElementById("startDate")
+        .value;
+
+
+    if (
+        !name ||
+        !totalPages ||
+        totalPages < 1
+    ) {
+
+        alert(
+            "Please enter a book name and page count."
+        );
+
+        return;
+    }
+
+
+    try {
+
+        await addDoc(
+            collection(db, "books"),
+            {
+                userId: user.uid,
+                name: name,
+                totalPages: totalPages,
+                currentPage: 0,
+                startDate:
+                    startDate ||
+                    new Date()
+                    .toISOString()
+                    .split("T")[0],
+                endDate: null,
+                rating: 0
+            }
+        );
+
+
+        document
+        .getElementById("bookName")
+        .value = "";
+
+
+        document
+        .getElementById("totalPages")
+        .value = "";
+
+
+        document
+        .getElementById("startDate")
+        .value = "";
+
+
+        await loadBooks();
+
+    }
+    catch(error) {
+
+        alert(
+            "Could not save the book: " +
+            error.message
+        );
+
+    }
+
+});
+
+
+/* ================================================= */
+/* LOAD BOOKS */
+/* ================================================= */
+
+async function loadBooks() {
+
+    const user =
+        auth.currentUser;
+
+    if (!user) return;
+
+
+    try {
+
+        const booksQuery =
+            query(
+                collection(db, "books"),
+                where(
+                    "userId",
+                    "==",
+                    user.uid
+                )
+            );
+
+
+        const snapshot =
+            await getDocs(booksQuery);
+
+
+        books = [];
+
+
+        snapshot.forEach(item => {
+
+            books.push({
+                id: item.id,
+                ...item.data()
+            });
+
+        });
+
+
+        displayBooks();
+
+    }
+    catch(error) {
+
+        console.log(
+            "Book loading error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ================================================= */
+/* DISPLAY BOOKS */
+/* ================================================= */
+
+function displayBooks() {
+
+    const bookList =
+        document.getElementById(
+            "bookList"
+        );
+
+
+    const search =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+
+    bookList.innerHTML = "";
+
+
+    const filtered =
+        books.filter(book =>
+            book.name
+            .toLowerCase()
+            .includes(search)
+        );
+
+
+    if (filtered.length === 0) {
+
+        bookList.innerHTML = `
+            <div class="empty">
+                🌷 No books found.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    filtered.forEach(book => {
+
+        const percentage =
+            Math.min(
+                100,
+                Math.round(
+                    (
+                        book.currentPage /
+                        book.totalPages
+                    ) * 100
+                )
+            );
+
+
+        const finished =
+            book.currentPage >=
+            book.totalPages;
+
+
+        let pagesHTML = "";
+
+
+        for (
+            let i = 1;
+            i <= book.totalPages;
+            i++
+        ) {
+
+            pagesHTML += `
+
+                <button
+                    type="button"
+                    class="page ${
+                        i <= book.currentPage
+                        ? "read"
+                        : ""
+                    }"
+                    data-book="${book.id}"
+                    data-page="${i}">
+                    ${i}
+                </button>
+
+            `;
+
+        }
+
+
+        const div =
+            document.createElement("div");
+
+        div.className = "book";
+
+
+        div.innerHTML = `
+
+            <div class="book-header">
+
+                <div>
+
+                    <h2 class="book-title">
+                        📖
+                        ${escapeHTML(book.name)}
+                    </h2>
+
+                    <span class="
+                        status
+                        ${finished ? "finished" : ""}
+                    ">
+                        ${
+                            finished
+                            ? "Finished ✨"
+                            : "Currently Reading 📖"
+                        }
+                    </span>
+
+                    <div class="rating">
+
+                        ${createStars(
+                            book.id,
+                            book.rating || 0
+                        )}
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="delete"
+                    data-delete="${book.id}">
+                    Delete
+                </button>
+
+            </div>
+
+
+            <div class="dates">
+
+                <span>
+                    🌱 Started:
+                    ${formatDate(book.startDate)}
+                </span>
+
+                <span>
+                    🏁 Ended:
+                    ${
+                        book.endDate
+                        ? formatDate(book.endDate)
+                        : "Not finished yet"
+                    }
+                </span>
+
+            </div>
+
+
+            <div class="progress-info">
+
+                <span>
+                    ${book.currentPage}
+                    /
+                    ${book.totalPages}
+                    pages
+                </span>
+
+                <span>
+                    ${percentage}%
+                </span>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    style="width:${percentage}%">
+                </div>
+
+            </div>
+
+
+            <div class="pages">
+                ${pagesHTML}
+            </div>
+
+        `;
+
+
+        bookList.appendChild(div);
+
+    });
+
+
+    /* PAGE BUTTONS */
+
+    document
+    .querySelectorAll(".page")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                updatePage(
+                    button.dataset.book,
+                    parseInt(
+                        button.dataset.page
+                    )
+                );
+
+            }
+        );
+
+    });
+
+
+    /* DELETE BUTTONS */
+
+    document
+    .querySelectorAll("[data-delete]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                deleteBook(
+                    button.dataset.delete
+                );
+
+            }
+        );
+
+    });
+
+
+    /* STAR BUTTONS */
+
+    document
+    .querySelectorAll("[data-rating]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                rateBook(
+                    button.dataset.book,
+                    parseInt(
+                        button.dataset.rating
+                    )
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* ================================================= */
+/* STARS */
+/* ================================================= */
+
+function createStars(
+    bookId,
+    rating
+) {
+
+    let result = "";
+
+
+    for (
+        let i = 1;
+        i <= 5;
+        i++
+    ) {
+
+        result += `
+
+            <button
+                type="button"
+                class="star"
+                data-book="${bookId}"
+                data-rating="${i}">
+
+                ${
+                    i <= rating
+                    ? "★"
+                    : "☆"
+                }
+
+            </button>
+
+        `;
+
+    }
+
+
+    return result;
+
+}
+
+
+/* ================================================= */
+/* RATE BOOK */
+/* ================================================= */
+
+async function rateBook(
+    bookId,
+    rating
+) {
+
+    await updateDoc(
+        doc(db, "books", bookId),
+        {
+            rating: rating
+        }
+    );
+
+    await loadBooks();
+
+}
+
+
+/* ================================================= */
+/* UPDATE PAGE */
+/* ================================================= */
+
+async function updatePage(
+    bookId,
+    pageNumber
+) {
+
+    const book =
+        books.find(
+            item => item.id === bookId
+        );
+
+
+    if (!book) return;
+
+
+    let endDate =
+        book.endDate;
+
+
+    if (
+        pageNumber >=
+        book.totalPages
+    ) {
+
+        endDate =
+            endDate ||
+            new Date()
+            .toISOString()
+            .split("T")[0];
+
+    }
+    else {
+
+        endDate = null;
+
+    }
+
+
+    await updateDoc(
+        doc(db, "books", bookId),
+        {
+            currentPage: pageNumber,
+            endDate: endDate
+        }
+    );
+
+
+    await loadBooks();
+
+}
+
+
+/* ================================================= */
+/* DELETE BOOK */
+/* ================================================= */
+
+async function deleteBook(bookId) {
+
+    if (
+        !confirm(
+            "Remove this book from your collection?"
+        )
+    ) {
+        return;
+    }
+
+
+    await deleteDoc(
+        doc(db, "books", bookId)
+    );
+
+
+    await loadBooks();
+
+}
+
+
+/* ================================================= */
+/* SEARCH */
+/* ================================================= */
+
+document
+.getElementById("search")
+.addEventListener(
+    "input",
+    displayBooks
+);
+
+
+/* ================================================= */
+/* DATE */
+/* ================================================= */
+
+function formatDate(date) {
+
+    if (!date) return "Not set";
+
+
+    const parts =
+        date.split("-");
+
+
+    if (parts.length !== 3)
+        return date;
+
+
+    return (
+        parts[2] +
+        "/" +
+        parts[1] +
+        "/" +
+        parts[0]
+    );
+
+}
+
+
+/* ================================================= */
+/* ESCAPE HTML */
+/* ================================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* ================================================= */
+/* FIREBASE ERRORS */
+/* ================================================= */
+
+function getFirebaseError(error) {
+
+    switch(error.code) {
+
+        case "auth/email-already-in-use":
+            return "This email already has an account.";
+
+        case "auth/invalid-email":
+            return "Please enter a valid email.";
+
+        case "auth/weak-password":
+            return "Password must be at least 6 characters.";
+
+        case "auth/invalid-credential":
+            return "Incorrect email or password.";
+
+        case "auth/network-request-failed":
+            return "Check your internet connection.";
+
+        default:
+            return error.message;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
